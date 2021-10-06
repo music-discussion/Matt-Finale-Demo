@@ -290,8 +290,7 @@ class TitleState extends MusicBeatState
 				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
 
 				http.onData = function (data:String) {
-				  
-				  	/*if (!MainMenuState.kadeEngineVer.contains(data.trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
+				  	if (!MainMenuState.kadeEngineVer.contains(data.trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
 					{
 						trace('outdated lmao! ' + data.trim() + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = data;
@@ -300,13 +299,13 @@ class TitleState extends MusicBeatState
 					else
 					{
 						FlxG.switchState(new MainMenuState());
-					}*/
-					FlxG.switchState(new WarningState());
+					}
+			//		FlxG.switchState(new WarningState());
 				}
 				
 				http.onError = function (error) {
 				  trace('error: $error');
-				  FlxG.switchState(new WarningState()); // fail but we go anyway
+				  FlxG.switchState(new BackupSubState()); // fail but we go anyway
 				}
 				
 				http.request();
